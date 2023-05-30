@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from './Button';
 export function Header(props) {
-  const { changeTheme } = props;
+  const { theme, changeTheme } = props;
   const { createNewTask } = useContext(TasksContext);
   const [isOpen, setIsOpen] = useState(false);
   const [taskName, setTaskName] = useState('');
@@ -34,10 +34,13 @@ export function Header(props) {
         onClick={handleOpen}
       />
       <Button
+        theme={theme}
         className="button--icon--theme"
         onClick={changeTheme}
       >
-        <NightlightIcon />
+        <NightlightIcon
+          sx={{ color: `${theme === 'dark' ? '#fff' : '#000'}`}}
+        />
       </Button>
       <Dialog
         open={isOpen}
